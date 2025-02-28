@@ -1,10 +1,11 @@
 import 'dart:async';
+import 'dart:js_interop';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:infinite_carousel/infinite_carousel.dart';
 import 'package:neubrutalism_ui/neubrutalism_ui.dart';
 import 'package:portfolio/src/presentation/views/home/project.dart';
 import 'package:portfolio/src/presentation/views/home/tech_stack.dart';
@@ -18,8 +19,106 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late double deviceWidth, deviceHeight;
-  final ScrollController _scrollController = ScrollController();
+
+  @override
+  Widget build(BuildContext context) {
+    deviceHeight = MediaQuery.of(context).size.height;
+    deviceWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      // backgroundColor: Color(0xFF121212),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: deviceHeight * 0.01,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.05),
+              child: NeuContainer(
+                height: deviceHeight * 0.08,
+                width: deviceWidth,
+                color: Colors.grey.shade800,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Home",
+                        style: GoogleFonts.poppins(
+                          fontSize: 25.sp,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Journey",
+                        style: GoogleFonts.poppins(
+                          fontSize: 25.sp,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Projects",
+                        style: GoogleFonts.poppins(
+                          fontSize: 25.sp,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                    NeuIconButton(
+                      enableAnimation: true,
+                      icon: Icon(EvaIcons.sun),
+                      buttonHeight: 50.h,
+                      buttonWidth: 50.h,
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    SizedBox(
+                      width: 20.w,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            AboutSection(),
+            SkillsSection(),
+            ExperinceSection(),
+            ProjectSection(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SkillsSection extends StatefulWidget {
+  SkillsSection({super.key});
+
+  @override
+  State<SkillsSection> createState() => _SkillsSectionState();
+}
+
+class _SkillsSectionState extends State<SkillsSection> {
+  late double deviceHeight, deviceWidth;
+
+  final InfiniteScrollController _scrollController = InfiniteScrollController();
+
   bool _isLoading = false;
+
   Timer? _autoScrollTimer;
 
   List<TechStack> skills = [
@@ -45,15 +144,8 @@ class _HomePageState extends State<HomePage> {
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'SQLite',
-      icon: Brand(Brands.my_sql),
-      description:
-          'SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.',
-      type: TechStackType.database,
-    ),
-    TechStack(
       name: 'Linux',
-      icon: Brand(Brands.linux_mint),
+      icon: Brand(Brands.bash),
       description:
           'Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds.',
       type: TechStackType.platform,
@@ -66,116 +158,88 @@ class _HomePageState extends State<HomePage> {
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'GitHub',
-      icon: Brand(Brands.github),
+      name: 'Django',
+      icon: Brand(Brands.django),
       description:
-          'GitHub, Inc. is a provider of Internet hosting for software development and version control using Git.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Bitbucket',
-      icon: Brand(Brands.bitbucket),
+      name: 'Python',
+      icon: Brand(Brands.python),
       description:
-          'Bitbucket is a web-based version control repository hosting service owned by Atlassian, for source code and development projects that use either Mercurial or Git revision control systems.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Jira',
-      icon: Brand(Brands.jira),
+      name: 'Node Js',
+      icon: Brand(Brands.nodejs),
       description:
-          'Jira Software is an agile project management tool that supports any agile methodology, be it scrum, kanban, or your own unique flavor.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Confluence',
-      icon: Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.javascript),
       description:
-          'Confluence is a team workspace where knowledge and collaboration meet. Dynamic pages give your team a place to create, capture, and collaborate on any project or idea.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Slack',
-      icon: Brand(Brands.slack),
+      name: 'Node Js',
+      icon: Brand(Brands.java),
       description:
-          'Slack is a proprietary business communication platform developed by American software company Slack Technologies.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Trello',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.android_os),
       description:
-          'Trello is a web-based list-making application originally made by Fog Creek Software in 2011, that was spun out to form the basis of a separate company in 2014 and later sold to Atlassian in January 2017.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Postman',
-      icon: Brand(Brands.postgresql),
+      name: 'Node Js',
+      icon: Brand(Brands.c_programming),
       description:
-          'Postman is a collaboration platform for API development. Postmans features simplify each step of building an API and streamline collaboration so you can create better APIs—faster.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Docker',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.cpp),
       description:
-          'Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Kubernetes',
-      icon: const Icon(Icons.source),
-      description: 'Kubernetes',
-      type: TechStackType.tool,
-    ),
-    TechStack(
-      name: 'Postman',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.kotlin),
       description:
-          'Postman is a collaboration platform for API development. Postmans features simplify each step of building an API and streamline collaboration so you can create better APIs—faster.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Docker',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.html_5),
       description:
-          'Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Kubernetes',
-      icon: const Icon(Icons.source),
-      description: 'Kubernetes',
-      type: TechStackType.tool,
-    ),
-    TechStack(
-      name: 'Postman',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.css3),
       description:
-          'Postman is a collaboration platform for API development. Postmans features simplify each step of building an API and streamline collaboration so you can create better APIs—faster.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
     ),
     TechStack(
-      name: 'Docker',
-      icon: const Icon(Icons.source),
+      name: 'Node Js',
+      icon: Brand(Brands.react_native),
       description:
-          'Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.',
+          'Git is a distributed version-control system for tracking changes in source code during software development.',
       type: TechStackType.tool,
-    ),
-    TechStack(
-      name: 'Kubernetes',
-      icon: const Icon(Icons.source),
-      description: 'Kubernetes',
-      type: TechStackType.tool,
-    ),
-  ];
-
-  List<Project> projects = [
-    Project(
-      name: "AgroGuru",
-      description: "",
-      image:
-          "https://github-readme-stats.vercel.app/api/pin/?username=chinmay575&repo=agroguru&show_owner=true",
-      techStack: [],
     ),
   ];
 
@@ -227,183 +291,280 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     deviceHeight = MediaQuery.of(context).size.height;
     deviceWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-              child: SizedBox(
-            height: deviceHeight * 0.01,
-          )),
-          SliverAppBar(
-            elevation: 8,
-            title: Text('Portfolio'),
-            floating: true,
-            // pinned: true,
-            flexibleSpace: Container(
-              height: 200,
-              color: Colors.green,
+
+    return Container(
+      height: deviceHeight * 0.1,
+      // width: deviceWidth,
+      color: Colors.black,
+      child: InfiniteCarousel.builder(
+        itemExtent: 120.w,
+        loop: true,
+        velocityFactor: 1.0,
+        // shrinkWrap: true,
+        // scrollDirection: Axis.horizontal,
+        itemCount: skills.length,
+        controller: _scrollController,
+        itemBuilder: (_, i, j) {
+          TechStack skill = skills[i];
+          return Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 15.w,
+              vertical: 15.w,
             ),
-            snap: true,
-            backgroundColor: Colors.red,
+            child: skill.icon,
+          );
+        },
+      ),
+    );
+  }
+}
+
+class ExperinceSection extends StatelessWidget {
+  ExperinceSection({super.key});
+  late double deviceHeight, deviceWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    deviceHeight = MediaQuery.of(context).size.height;
+    deviceWidth = MediaQuery.of(context).size.width;
+
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: deviceWidth * 0.05,
+            vertical: deviceHeight * 0.01,
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                vertical: deviceHeight * 0.05,
-                horizontal: deviceWidth * 0.05,
+          child: NeuContainer(
+            height: deviceHeight * 0.1,
+            width: deviceWidth,
+            color: Colors.grey.shade800,
+            child: Center(
+              child: Text(
+                "My Journey",
+                style: GoogleFonts.poppins(
+                  fontSize: 50.sp,
+                ),
+                textAlign: TextAlign.center,
               ),
-              padding: const EdgeInsets.symmetric(),
-              height: deviceHeight * 0.5,
-              width: deviceWidth,
-              color: Colors.amber,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Column(
-                    children: [
-                      Text("Namaste"),
-                      Text("I'm Chinmay Singh Modak"),
-                      Text(
-                        "Flutter Developer",
-                      ),
-                    ],
+            ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: deviceWidth * 0.05,
+            vertical: deviceHeight * 0.01,
+          ),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              const Text("Isourse Technologies"),
+              const Text("Isourse Technologies"),
+              const Text("Analysed"),
+              const Text("Yoshops.com"),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ProjectSection extends StatelessWidget {
+  ProjectSection({super.key});
+  late double deviceHeight, deviceWidth;
+
+  List<Project> projects = [
+    Project(
+      name: "AgroGuru",
+      description: "",
+      image:
+          "https://github-readme-stats.vercel.app/api/pin/?username=chinmay575&repo=agroguru&show_owner=true",
+      techStack: [],
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    deviceHeight = MediaQuery.of(context).size.height;
+    deviceWidth = MediaQuery.of(context).size.width;
+
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: deviceWidth * 0.05,
+            vertical: deviceHeight * 0.01,
+          ),
+          child: NeuContainer(
+            height: deviceHeight * 0.1,
+            width: deviceWidth,
+            color: Colors.grey.shade800,
+            child: Center(
+              child: Text(
+                "Projects",
+                style: GoogleFonts.poppins(
+                  fontSize: 50.sp,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
+        Container(
+          // color: Colors.red,
+          height: deviceHeight * 0.3,
+          width: deviceWidth,
+          child: GridView.builder(
+            padding: EdgeInsets.symmetric(
+                horizontal: deviceWidth * 0.05, vertical: deviceHeight * 0.01),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: deviceWidth,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              childAspectRatio: 1,
+              mainAxisExtent: deviceWidth * 0.218,
+            ),
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: projects.length,
+            itemBuilder: (_, i) {
+              Project project = projects[i];
+              return NeuCard(
+                cardColor: Colors.blue,
+                // cardWidth: deviceWidth * 0.2,
+                child: Column(
+                  children: [
+                    // SvgPicture.network(
+                    //   project.image,
+                    //   height: deviceHeight * 0.1,
+                    //   width: deviceWidth * 0.2,
+                    // ),
+                    Text(project.name),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class AboutSection extends StatelessWidget {
+  AboutSection({super.key});
+  late double deviceHeight, deviceWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    deviceHeight = MediaQuery.of(context).size.height;
+    deviceWidth = MediaQuery.of(context).size.width;
+    return Container(
+      margin: EdgeInsets.symmetric(
+        vertical: deviceHeight * 0.05,
+        horizontal: deviceWidth * 0.05,
+      ),
+      padding: const EdgeInsets.symmetric(),
+      height: deviceHeight * 0.5,
+      width: deviceWidth,
+      // color: Colors.amber,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Namaste",
+                style: GoogleFonts.poppins(
+                  fontSize: 24.sp,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                "I'm Chinmay Singh Modak",
+                style: GoogleFonts.poppins(
+                  fontSize: 20.sp,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Container(
+                width: deviceWidth * 0.5,
+                child: Text(
+                  "Hey, I'm a Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
+                  style: GoogleFonts.poppins(
+                    fontSize: 20.sp,
+                    color: Colors.black,
                   ),
-                  Container(
-                    height: deviceHeight * 0.5,
-                    width: deviceWidth * 0.2,
-                    color: Colors.red,
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      FontAwesome.github_brand,
+                      size: 35.sp,
+                      color: Colors.black,
+                    ),
+                    hoverColor: Colors.blue,
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      FontAwesome.linkedin_brand,
+                      size: 35.sp,
+                    ),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      FontAwesome.instagram_brand,
+                      size: 35.sp,
+                    ),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      FontAwesome.facebook_brand,
+                      size: 35.sp,
+                    ),
+                    onPressed: () {},
                   ),
                 ],
               ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              height: deviceHeight * 0.1,
-              // width: deviceWidth,
-              color: Colors.black,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: skills.length,
-                controller: _scrollController,
-                itemBuilder: (_, i) {
-                  TechStack skill = skills[i];
-                  return Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
-                    ),
-                    child: Row(
-                      children: [
-                        skill.icon,
-                        Text(
-                          skill.name,
-                        ),
-                      ],
-                    ),
-                  );
-                },
+              SizedBox(
+                height: 20.h,
               ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: deviceWidth * 0.05,
-                vertical: deviceHeight * 0.01,
-              ),
-              child: NeuContainer(
-                height: deviceHeight * 0.1,
-                width: deviceWidth,
-                color: Colors.grey.shade800,
-                child: Center(
-                  child: Text(
-                    "My Journey",
-                    style: GoogleFonts.poppins(
-                      fontSize: 50.sp,
-                    ),
-                    textAlign: TextAlign.center,
+              NeuTextButton(
+                enableAnimation: true,
+                borderRadius: BorderRadius.circular(2),
+                buttonWidth: 160.w,
+                onPressed: () {},
+                text: Text(
+                  "Get in Touch",
+                  style: GoogleFonts.poppins(
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
-            ),
+            ],
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                  horizontal: deviceWidth * 0.05,
-                  vertical: deviceHeight * 0.01),
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  Text("Isourse Technologies"),
-                  Text("Isourse Technologies"),
-                  Text("Analysed"),
-                  Text("Yoshops.com"),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: deviceWidth * 0.05,
-                vertical: deviceHeight * 0.01,
-              ),
-              child: NeuContainer(
-                height: deviceHeight * 0.1,
-                width: deviceWidth,
-                color: Colors.grey.shade800,
-                child: Center(
-                  child: Text(
-                    "Projects",
-                    style: GoogleFonts.poppins(
-                      fontSize: 50.sp,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              // color: Colors.red,
-              height: deviceHeight * 0.3,
-              width: deviceWidth,
-              child: GridView.builder(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 0.05,
-                    vertical: deviceHeight * 0.01),
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: deviceWidth,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 1,
-                  mainAxisExtent: deviceWidth * 0.218,
-                ),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: projects.length,
-                itemBuilder: (_, i) {
-                  Project project = projects[i];
-                  return NeuCard(
-                    cardColor: Colors.blue,
-                    // cardWidth: deviceWidth * 0.2,
-                    child: Column(
-                      children: [
-                        SvgPicture.network(
-                          project.image,
-                          height: deviceHeight * 0.1,
-                          width: deviceWidth * 0.2,
-                        ),
-                        Text(project.name),
-                      ],
-                    ),
-                  );
-                },
-              ),
+          Container(
+            height: deviceHeight * 0.35,
+            width: deviceWidth * 0.25,
+            // color: Colors.red,
+            child: Image.asset(
+              "assets/images/profile-pic.png",
             ),
           ),
         ],

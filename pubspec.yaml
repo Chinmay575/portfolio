@@ -45,6 +45,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.17
   http: 
+  infinite_carousel: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -71,8 +72,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/fonts/
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -85,24 +84,24 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: RobotoSlab
-      fonts:
-        - asset: assets/fonts/RobotoSlab-ExtraBold.ttf
-          weight: 900
-        - asset: assets/fonts/RobotoSlab-SemiBold.ttf
-          weight: 800
-        - asset: assets/fonts/RobotoSlab-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/RobotoSlab-Regular.ttf
-          weight: 500
-        - asset: assets/fonts/RobotoSlab-Light.ttf
-          weight: 400
-        - asset: assets/fonts/RobotoSlab-ExtraLight.ttf
-          weight: 300
-        - asset: assets/fonts/RobotoSlab-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/RobotoSlab-Black.ttf   
+  # fonts:
+  #   - family: RobotoSlab
+  #     fonts:
+  #       - asset: assets/fonts/RobotoSlab-ExtraBold.ttf
+  #         weight: 900
+  #       - asset: assets/fonts/RobotoSlab-SemiBold.ttf
+  #         weight: 800
+  #       - asset: assets/fonts/RobotoSlab-Bold.ttf
+  #         weight: 700
+  #       - asset: assets/fonts/RobotoSlab-Regular.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/RobotoSlab-Light.ttf
+  #         weight: 400
+  #       - asset: assets/fonts/RobotoSlab-ExtraLight.ttf
+  #         weight: 300
+  #       - asset: assets/fonts/RobotoSlab-Thin.ttf
+  #         weight: 100
+  #       - asset: assets/fonts/RobotoSlab-Black.ttf   
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

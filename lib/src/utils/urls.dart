@@ -1,11 +1,27 @@
 class Urls {
-  static String baseUrl = "";
+  static final Map<Env, String> _urls = {
+    Env.local: _local,
+    Env.test: _test,
+    Env.live: _live,
+  };
 
-  static String about = "/about";
+  static String get baseUrl => _urls[Env.local] ?? _local;
 
-  static String experience = "/experiences";
+  static const String _local = "";
 
-  static String skills = "/skills";
+  static const String _test = "";
 
-  static String project = "/projects";
+  static const String _live = "";
+
+  static const String about = "/api/about";
+
+  static const String experience = "/api/experiences";
+
+  static const String skills = "/api/skills";
+
+  static const String project = "/api/projects";
+
+  static const String checkUserExists = "/api/auth/checkUser/";
 }
+
+enum Env { local, test, live }

@@ -4,41 +4,45 @@ import 'package:http/http.dart' as http;
 import 'package:portfolio/src/utils/urls.dart';
 
 abstract class _NetworkRepository {
-  Future<Res?> get<Req, Res>(
-      String url, Res Function(Map<String, dynamic>) fromJson);
+  Future<Map<String, dynamic>?> get(
+    String url,
+    Map<String, dynamic> req,
+  );
 
-  Future<Res?> post<Req, Res>(
-      String url, Req req, Res Function(Map<String, dynamic>) fromJson);
+  Future<Map<String, dynamic>?> post(
+    String url,
+    Map<String, dynamic> req,
+  );
 
-  Future<Res?> delete<Req, Res>(
-      String url, Req req, Res Function(Map<String, dynamic>) fromJson);
+  Future<Map<String, dynamic>?> delete(
+    String url,
+    Map<String, dynamic> req,
+  );
 
-  Future<Res?> put<Req, Res>(
-      String url, Req req, Res Function(Map<String, dynamic>) fromJson);
+  Future<Map<String, dynamic>?> put(
+    String url,
+    Map<String, dynamic> req,
+  );
 }
 
 class NetworkRepository implements _NetworkRepository {
   @override
-  Future<Res?> delete<Req, Res>(
-      String url, Req req, Res Function(Map<String, dynamic>) fromJson) async {
-    // TODO: implement delete
-    return null;
-  }
-
-  @override
-  Future<Res?> get<Req, Res>(
+  Future<Map<String, dynamic>?> delete(
     String url,
-    Res Function(Map<String, dynamic>) fromJson,
+    Map<String, dynamic> req,
   ) async {
     DateTime startTime = DateTime.now();
     try {
-      http.Response response = await http.get(Uri.parse(Urls.baseUrl + url));
+      http.Response response = await http.delete(
+        Uri.parse(Urls.baseUrl + url),
+        body: jsonEncode(req),
+      );
 
-      print("${url}response fetched in ${_calculateResponseTime(startTime)}");
+      print("$url response fetched in ${_calculateResponseTime(startTime)}");
 
       if (response.statusCode ~/ 100 == 2) {
         final Map<String, dynamic> jsonData = json.decode(response.body);
-        return fromJson(jsonData);
+        return jsonData;
       }
     } on Exception catch (e) {
       print(e);
@@ -47,31 +51,71 @@ class NetworkRepository implements _NetworkRepository {
   }
 
   @override
-  Future<Res?> post<Req, Res>(
+  Future<Map<String, dynamic>?> get(
     String url,
-    Req req,
-    Res Function(Map<String, dynamic>) fromJson,
+    Map<String, dynamic> req,
   ) async {
     DateTime startTime = DateTime.now();
-    // try {
-    //   http.Response response = await http.post(Uri.parse(Urls.baseUrl + url),body: req.toJson());
+    try {
+      http.Response response = await http.get(Uri.parse(Urls.baseUrl + url));
 
-    //   print("${url}response fetched in ${_calculateResponseTime(startTime)}");
+      print("$url response fetched in ${_calculateResponseTime(startTime)}");
 
-    //   if (response.statusCode ~/ 100 == 2) {
-    //     final Map<String, dynamic> jsonData = json.decode(response.body);
-    //     return fromJson(jsonData);
-    //   }
-    // } on Exception catch (e) {
-    //   print(e);
-    // }
+      if (response.statusCode ~/ 100 == 2) {
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+        return jsonData;
+      }
+    } on Exception catch (e) {
+      print(e);
+    }
     return null;
   }
 
   @override
-  Future<Res?> put<Req, Res>(
-      String url, Req req, Res Function(Map<String, dynamic>) fromJson) async {
-    // TODO: implement put
+  Future<Map<String, dynamic>?> post(
+    String url,
+    Map<String, dynamic>? req,
+  ) async {
+    DateTime startTime = DateTime.now();
+    try {
+      http.Response response = await http.post(
+        Uri.parse(Urls.baseUrl + url),
+        body: jsonEncode(req),
+      );
+
+      print("$url response fetched in ${_calculateResponseTime(startTime)}");
+
+      if (response.statusCode ~/ 100 == 2) {
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+        return jsonData;
+      }
+    } on Exception catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  @override
+  Future<Map<String, dynamic>?> put(
+    String url,
+    Map<String, dynamic> req,
+  ) async {
+    DateTime startTime = DateTime.now();
+    try {
+      http.Response response = await http.put(
+        Uri.parse(Urls.baseUrl + url),
+        body: jsonEncode(req),
+      );
+
+      print("$url response fetched in ${_calculateResponseTime(startTime)}");
+
+      if (response.statusCode ~/ 100 == 2) {
+        final Map<String, dynamic> jsonData = json.decode(response.body);
+        return jsonData;
+      }
+    } on Exception catch (e) {
+      print(e);
+    }
     return null;
   }
 

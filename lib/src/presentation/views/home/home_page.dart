@@ -1,39 +1,38 @@
-
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/presentation/views/home/widgets/aboout_section.dart';
+import 'package:portfolio/src/presentation/views/home/widgets/about_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/experience_section.dart';
+import 'package:portfolio/src/presentation/views/home/widgets/footer_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/project_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/skills_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/top_bar.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late double deviceWidth, deviceHeight;
-
-  @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.grey.shade700,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TopBar(),
-            AboutSection(),
-            SkillsSection(),
-            ExperienceSection(),
-            ProjectSection(),
-          ],
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/large-triangles.png"),
+              fit: BoxFit.scaleDown,
+              repeat: ImageRepeat.repeat,
+            ),
+          ),
+          child: Column(
+            children: [
+              TopBar(),
+              const AboutSection(),
+              SkillsSection(),
+              ExperienceSection(),
+              ProjectSection(),
+              FooterSection(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-

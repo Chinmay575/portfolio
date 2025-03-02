@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,33 +5,31 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:neubrutalism_ui/neubrutalism_ui.dart';
 
 class AboutSection extends StatelessWidget {
-  AboutSection({super.key});
-  late double deviceHeight, deviceWidth;
+  const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.symmetric(
-        vertical: deviceHeight * 0.05,
-        horizontal: deviceWidth * 0.05,
+        vertical: 50.h,
+        horizontal: 100.w,
       ),
-      padding: const EdgeInsets.symmetric(),
-      height: deviceHeight * 0.5,
-      width: deviceWidth,
+      height: 400.h,
+      width: 1920.w,
       // color: Colors.amber,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment:    MainAxisAlignment.start, 
             children: [
               Text(
                 "Namaste",
                 style: GoogleFonts.poppins(
                   fontSize: 24.sp,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(
@@ -42,19 +39,19 @@ class AboutSection extends StatelessWidget {
                 "I'm Chinmay Singh Modak",
                 style: GoogleFonts.poppins(
                   fontSize: 20.sp,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(
                 height: 20.h,
               ),
               Container(
-                width: deviceWidth * 0.5,
+                width: 900.w,
                 child: Text(
                   "Hey, I'm a Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
                   style: GoogleFonts.poppins(
                     fontSize: 20.sp,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -67,15 +64,15 @@ class AboutSection extends StatelessWidget {
                     icon: Icon(
                       FontAwesome.github_brand,
                       size: 35.sp,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
-                    hoverColor: Colors.blue,
                     onPressed: () {},
                   ),
                   IconButton(
                     icon: Icon(
                       FontAwesome.linkedin_brand,
                       size: 35.sp,
+                      color: Colors.white,
                     ),
                     onPressed: () {},
                   ),
@@ -83,6 +80,7 @@ class AboutSection extends StatelessWidget {
                     icon: Icon(
                       FontAwesome.instagram_brand,
                       size: 35.sp,
+                      color: Colors.white,
                     ),
                     onPressed: () {},
                   ),
@@ -90,6 +88,7 @@ class AboutSection extends StatelessWidget {
                     icon: Icon(
                       FontAwesome.facebook_brand,
                       size: 35.sp,
+                      color: Colors.white,
                     ),
                     onPressed: () {},
                   ),
@@ -107,17 +106,19 @@ class AboutSection extends StatelessWidget {
                   "Get in Touch",
                   style: GoogleFonts.poppins(
                     fontSize: 20.sp,
+                    color: Colors.white
                   ),
                 ),
               ),
             ],
           ),
           Container(
-            height: deviceHeight * 0.35,
-            width: deviceWidth * 0.25,
+            height: 400.h,
+            width: 400.h,
             // color: Colors.red,
             child: Image.asset(
               "assets/images/profile-pic.png",
+              fit: BoxFit.contain,
             ),
           ),
         ],

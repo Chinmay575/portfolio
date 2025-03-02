@@ -5,20 +5,17 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:neubrutalism_ui/neubrutalism_ui.dart';
 
 class TopBar extends StatelessWidget {
-  late double deviceWidth, deviceHeight;
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 40.h,
       ),
-      padding: EdgeInsets.symmetric(horizontal: deviceWidth * 0.05),
+      padding: EdgeInsets.symmetric(horizontal: 100.w),
       child: NeuContainer(
-        height: deviceHeight * 0.08,
-        width: deviceWidth,
+        height: 100.h,
+        width: 1920.w,
         color: Colors.grey.shade800,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,

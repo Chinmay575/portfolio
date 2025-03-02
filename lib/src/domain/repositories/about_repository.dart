@@ -1,4 +1,4 @@
-import 'package:portfolio/src/domain/models/about/about.dart';
+import 'package:portfolio/src/domain/models/about.dart';
 
 abstract class AboutRepository {
   Future<About> getAboutData();

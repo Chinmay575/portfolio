@@ -7,9 +7,8 @@ import 'package:portfolio/src/domain/models/project.dart';
 
 class ProjectSection extends StatelessWidget {
   ProjectSection({super.key});
-  late double deviceHeight, deviceWidth;
 
-  List<Project> projects = [
+  final List<Project> projects = [
     Project(
       name: "AgroGuru",
       description: "",
@@ -26,19 +25,17 @@ class ProjectSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
         Container(
           margin: EdgeInsets.symmetric(
-            horizontal: deviceWidth * 0.05,
-            vertical: deviceHeight * 0.01,
+            horizontal: 100.w,
+            vertical: 50.h,
           ),
           child: NeuContainer(
-            height: deviceHeight * 0.1,
-            width: deviceWidth,
+            height: 100.h,
+            width: 1920.w,
             color: Colors.grey.shade800,
             child: Center(
               child: Text(
@@ -53,19 +50,19 @@ class ProjectSection extends StatelessWidget {
         ),
         Container(
           // color: Colors.red,
-          height: 300.h,
-          width: deviceWidth,
+          height: 400.h,
+          width: 1920.w,
           child: GridView.builder(
             padding: EdgeInsets.symmetric(
-              horizontal: deviceWidth * 0.05,
-              vertical: deviceHeight * 0.01,
+              horizontal: 100.w,
+              vertical: 50.h,
             ),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: deviceWidth,
+              maxCrossAxisExtent: 1920.w,
               crossAxisSpacing: 20.w,
               mainAxisSpacing: 20.w,
               childAspectRatio: 1,
-              mainAxisExtent: deviceWidth * 0.218,
+              mainAxisExtent: 400.w,
             ),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
@@ -86,6 +83,7 @@ class ProjectSection extends StatelessWidget {
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Brand(Brands.flutter),
                         Brand(Brands.django),

@@ -38,7 +38,7 @@ class AppRouter {
               }
             } else if (segments.length == 1) {
               if (segments[0] == "Chinmay575") {
-                w = const HomePage();
+                w = HomePage();
               } else {
                 w = const UserNotFoundPage();
               }

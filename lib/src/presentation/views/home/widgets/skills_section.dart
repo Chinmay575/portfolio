@@ -2,7 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
 import 'package:portfolio/src/domain/models/tech_stack.dart';
@@ -15,7 +15,7 @@ class SkillsSection extends StatefulWidget {
 }
 
 class _SkillsSectionState extends State<SkillsSection> {
-  late double deviceHeight, deviceWidth;
+  // late double deviceHeight, deviceWidth;
 
   final InfiniteScrollController _scrollController = InfiniteScrollController();
 
@@ -191,15 +191,13 @@ class _SkillsSectionState extends State<SkillsSection> {
 
   @override
   Widget build(BuildContext context) {
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      height: deviceHeight * 0.1,
+      height: 100,
       // width: deviceWidth,
       color: Colors.black,
       child: InfiniteCarousel.builder(
-        itemExtent: 120.w,
+        itemExtent: 120,
         loop: true,
         velocityFactor: 1.0,
         // shrinkWrap: true,
@@ -210,8 +208,8 @@ class _SkillsSectionState extends State<SkillsSection> {
           TechStack skill = skills[i];
           return Container(
             margin: EdgeInsets.symmetric(
-              horizontal: 15.w,
-              vertical: 15.w,
+              horizontal: 15, 
+              vertical: 15,
             ),
             child: skill.icon,
           );

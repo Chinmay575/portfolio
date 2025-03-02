@@ -7,7 +7,10 @@ import 'package:portfolio/src/presentation/views/home/widgets/skills_section.dar
 import 'package:portfolio/src/presentation/views/home/widgets/top_bar.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final GlobalKey experienceKey = GlobalKey();
+  final GlobalKey projectsKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +26,18 @@ class HomePage extends StatelessWidget {
           ),
           child: Column(
             children: [
-              TopBar(),
+              TopBar(
+                expKey: experienceKey,
+                projectKey: projectsKey,
+              ),
               const AboutSection(),
               SkillsSection(),
-              ExperienceSection(),
-              ProjectSection(),
+              ExperienceSection(
+                key: experienceKey,
+              ),
+              ProjectSection(
+                key: projectsKey,
+              ),
               FooterSection(),
             ],
           ),

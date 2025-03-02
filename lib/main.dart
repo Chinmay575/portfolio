@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: "${Routes.home}/Chinmay575",
         onGenerateRoute: AppRouter.onGenerateRoute,
-        
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/about_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/experience_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/footer_section.dart';
@@ -6,11 +7,22 @@ import 'package:portfolio/src/presentation/views/home/widgets/project_section.da
 import 'package:portfolio/src/presentation/views/home/widgets/skills_section.dart';
 import 'package:portfolio/src/presentation/views/home/widgets/top_bar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final GlobalKey experienceKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
+
+  @override
+  void initState() {
+    FlutterNativeSplash.remove();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

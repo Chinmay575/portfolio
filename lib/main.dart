@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/src/config/router.dart';
 import 'package:portfolio/src/utils/routes.dart';
 
 void main() {
+  WidgetsBinding bindings = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: bindings);
   runApp(const MyApp());
 }
 

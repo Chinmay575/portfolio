@@ -462,6 +462,7 @@ class CompiledApp {
       _1553: x0 => x0.selectedTrack,
       _1554: x0 => x0.repetitionCount,
       _1555: x0 => x0.frameCount,
+      _1633: (x0,x1,x2,x3) => x0.open(x1,x2,x3),
       _1644: x0 => new Array(x0),
       _1646: x0 => x0.length,
       _1648: (x0,x1) => x0[x1],

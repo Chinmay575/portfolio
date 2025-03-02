@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:neubrutalism_ui/neubrutalism_ui.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -23,7 +24,7 @@ class AboutSection extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment:    MainAxisAlignment.start, 
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 "Namaste",
@@ -48,7 +49,7 @@ class AboutSection extends StatelessWidget {
               Container(
                 width: 900.w,
                 child: Text(
-                  "Hey, I'm a Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
+                  "I'm a Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
                   style: GoogleFonts.poppins(
                     fontSize: 20.sp,
                     color: Colors.white,
@@ -66,7 +67,9 @@ class AboutSection extends StatelessWidget {
                       size: 35.sp,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(Uri.parse("https://github.com/Chinmay575/"));
+                    },
                   ),
                   IconButton(
                     icon: Icon(
@@ -74,7 +77,10 @@ class AboutSection extends StatelessWidget {
                       size: 35.sp,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(Uri.parse(
+                          "https://www.linkedin.com/in/chinmay-singh-modak/"));
+                    },
                   ),
                   IconButton(
                     icon: Icon(
@@ -82,7 +88,10 @@ class AboutSection extends StatelessWidget {
                       size: 35.sp,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(Uri.parse(
+                          "https://www.instagram.com/chinmay.singhmodak/"));
+                    },
                   ),
                   IconButton(
                     icon: Icon(
@@ -90,7 +99,10 @@ class AboutSection extends StatelessWidget {
                       size: 35.sp,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(Uri.parse(
+                          "https://www.facebook.com/chinmay.singhmodak/"));
+                    },
                   ),
                 ],
               ),
@@ -104,10 +116,8 @@ class AboutSection extends StatelessWidget {
                 onPressed: () {},
                 text: Text(
                   "Get in Touch",
-                  style: GoogleFonts.poppins(
-                    fontSize: 20.sp,
-                    color: Colors.white
-                  ),
+                  style:
+                      GoogleFonts.poppins(fontSize: 20.sp, color: Colors.white),
                 ),
               ),
             ],

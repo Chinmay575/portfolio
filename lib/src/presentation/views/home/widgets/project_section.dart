@@ -4,28 +4,28 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:neubrutalism_ui/neubrutalism_ui.dart';
 import 'package:portfolio/src/domain/models/project.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectSection extends StatelessWidget {
   ProjectSection({super.key});
 
   final List<Project> projects = [
     Project(
-      name: "AgroGuru",
-      description: "",
-      image:
-          "https://camo.githubusercontent.com/56f91a547ef111933c019558352654ee4a1108e22acd5e104510bd9777777dea/68747470733a2f2f692e6962622e636f2f596248567877682f6c6f676f2e706e67",
-      techStack: [
-        "Flutter",
-        "Deep-Learning",
-        "Gemini",
-        "Django",
-      ],
-    ),
+        name: "AgroGuru",
+        description:
+            "Deep learning based solution to agriculture based problems built using Flutter and Django, integrated with Gemini Vision Pro.",
+        image: "",
+        techStack: [
+          "Flutter",
+          "Deep Learning",
+          "Gemini",
+          "Django",
+        ],
+        code: "https://github.com/Chinmay575/agroguru"),
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         Container(
@@ -71,6 +71,7 @@ class ProjectSection extends StatelessWidget {
               Project project = projects[i];
               return NeuCard(
                 cardColor: Colors.grey.shade800,
+                paddingData: EdgeInsets.all(8.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -82,18 +83,29 @@ class ProjectSection extends StatelessWidget {
                         fontSize: 30.sp,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Brand(Brands.flutter),
-                        Brand(Brands.django),
-                        Brand(Brands.figma),
-                        Brand(Brands.amazon_web_services),
-                      ],
+                    Text(
+                      project.description,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16.sp,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    NeuIconButton(
-                      enableAnimation: true,
-                      icon: Icon(FontAwesome.github_brand),
+                    Text(
+                      project.techStack.join(", "),
+                      softWrap: true,
+                      style: GoogleFonts.poppins(
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    Visibility(
+                      visible: project.code != null,
+                      child: NeuIconButton(
+                        enableAnimation: true,
+                        icon: Icon(FontAwesome.github_brand),
+                        onPressed: () {
+                          launchUrl(Uri.parse(project.code ?? ""));
+                        },
+                      ),
                     ),
                   ],
                 ),

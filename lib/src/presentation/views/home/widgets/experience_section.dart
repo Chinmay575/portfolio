@@ -79,6 +79,7 @@ class ExperienceSection extends StatelessWidget {
                         height: 20,
                         width: 20,
                       ),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: experiences.length,
                       shrinkWrap: true,
                       itemBuilder: (_, i) {

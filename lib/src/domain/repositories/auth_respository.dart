@@ -1,9 +1,12 @@
+import 'package:portfolio/src/domain/models/request/register_user_req.dart';
 import 'package:portfolio/src/domain/repositories/network_repository.dart';
+import 'package:portfolio/src/utils/urls.dart';
 
-enum AuthType {email,google,github}
+enum AuthType { email, google, github }
 
 abstract class _AuthRepository {
-  registerWithEmail({required String email, required String password});
+  registerWithEmail(
+      {required String name, required String email, required String password});
 
   loginWithGoogle({required String email});
 
@@ -13,12 +16,10 @@ abstract class _AuthRepository {
 }
 
 class AuthRespository extends _AuthRepository {
-
   final NetworkRepository _networkRepository = NetworkRepository();
 
   @override
   loginWithEmail({required String email, required String password}) {
-
     // _networkRepository.post("", );
   }
 
@@ -35,8 +36,14 @@ class AuthRespository extends _AuthRepository {
   }
 
   @override
-  registerWithEmail({required String email, required String password}) {
-    // TODO: implement registerWithEmail
-    throw UnimplementedError();
+  registerWithEmail({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
+    RegisterUserReq req =
+        RegisterUserReq(name: name, email: email, password: password);
+    Map<String, dynamic>? res =
+        await _networkRepository.post(Urls.register, req.toJson());
   }
 }

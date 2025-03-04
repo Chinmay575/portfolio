@@ -7,7 +7,7 @@ class Urls {
 
   static String get baseUrl => _urls[Env.local] ?? _local;
 
-  static const String _local = "";
+  static const String _local = "http://127.0.0.1:5000/";
 
   static const String _test = "";
 
@@ -22,6 +22,10 @@ class Urls {
   static const String project = "/api/projects";
 
   static const String checkUserExists = "/api/auth/checkUser/";
+
+  static const String login = "/api/auth/login";
+
+  static const String register = "/api/auth/register";
 }
 
 enum Env { local, test, live }

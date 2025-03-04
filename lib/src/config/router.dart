@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:portfolio/src/presentation/views/auth/login_page.dart';
 import 'package:portfolio/src/presentation/views/auth/register_page.dart';
 import 'package:portfolio/src/presentation/views/error/page_not_found.dart';
 import 'package:portfolio/src/presentation/views/error/user_not_found.dart';
-import 'package:portfolio/src/presentation/views/home/edit_page.dart';
+import 'package:portfolio/src/presentation/views/edit/edit_page.dart';
 import 'package:portfolio/src/presentation/views/home/home_page.dart';
 import 'package:portfolio/src/utils/routes.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
+    FlutterNativeSplash.remove();
     if (settings.name != null) {
       String nextRoute = settings.name!;
 

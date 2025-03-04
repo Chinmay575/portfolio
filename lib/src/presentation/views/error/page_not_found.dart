@@ -15,7 +15,7 @@ class UrlNotFoundPage extends StatelessWidget {
         width: double.maxFinite,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Image.asset(
@@ -25,7 +25,7 @@ class UrlNotFoundPage extends StatelessWidget {
               fit: BoxFit.contain,
               colorBlendMode: BlendMode.srcIn,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Text(
@@ -35,7 +35,7 @@ class UrlNotFoundPage extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             NeuTextButton(

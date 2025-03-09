@@ -39,13 +39,15 @@ dependencies:
   icons_plus: ^5.0.0
   neubrutalism_ui: ^2.0.2
   google_fonts: ^6.2.1
-  flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.17
   http: 
   infinite_carousel: ^1.1.1
   timeline_list: ^0.1.1
   url_launcher: ^6.3.1
   flutter_native_splash: ^2.4.1
+  flutter_bloc: ^9.1.0
+  bloc: ^9.0.0
+  flutter_svg_provider: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +59,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  flutter_native_splash: ^2.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

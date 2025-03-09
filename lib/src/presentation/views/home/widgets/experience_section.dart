@@ -56,7 +56,7 @@ class ExperienceSection extends StatelessWidget {
                 height: 100,
                 width: double.maxFinite,
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.grey.shade800,
+                color: Theme.of(context).colorScheme.surfaceContainer,
                 child: Center(
                   child: Text(
                     "Journey",
@@ -88,7 +88,8 @@ class ExperienceSection extends StatelessWidget {
                           cardHeight: 200,
                           cardWidth: 400,
                           borderRadius: BorderRadius.circular(10),
-                          cardColor: Colors.grey.shade800,
+                          cardColor:
+                              Theme.of(context).colorScheme.surfaceContainer,
                           paddingData: const EdgeInsets.all(10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -144,9 +145,11 @@ class ExperienceSection extends StatelessWidget {
                           icon: Container(
                             height: 40,
                             width: 40,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.black,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainer,
                             ),
                             child: Center(
                               child: Text(
@@ -154,7 +157,7 @@ class ExperienceSection extends StatelessWidget {
                                     .format(experience.range.start),
                                 style: GoogleFonts.poppins(
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  // color: Colors.white,
                                 ),
                               ),
                             ),
@@ -164,7 +167,8 @@ class ExperienceSection extends StatelessWidget {
                             cardHeight: 200,
                             cardWidth: 400,
                             borderRadius: BorderRadius.circular(10),
-                            cardColor: Colors.grey.shade800,
+                            cardColor:
+                                Theme.of(context).colorScheme.surfaceContainer,
                             paddingData: const EdgeInsets.all(10),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -211,7 +215,7 @@ class ExperienceSection extends StatelessWidget {
                         iconAlignment: MarkerIconAlignment.center,
                         lineWidth: 10,
                         markerGap: 100,
-                        lineColor: Colors.white,
+                        lineColor: Theme.of(context).colorScheme.inversePrimary,
                         timelinePosition: (size.maxWidth < 1000)
                             ? TimelinePosition.start
                             : TimelinePosition.center,

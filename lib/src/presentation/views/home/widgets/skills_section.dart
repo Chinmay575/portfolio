@@ -195,19 +195,17 @@ class _SkillsSectionState extends State<SkillsSection> {
     return Container(
       height: 100,
       // width: deviceWidth,
-      color: Colors.black,
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: InfiniteCarousel.builder(
         itemExtent: 120,
         loop: true,
         velocityFactor: 1.0,
-        // shrinkWrap: true,
-        // scrollDirection: Axis.horizontal,
         itemCount: skills.length,
         controller: _scrollController,
         itemBuilder: (_, i, j) {
           TechStack skill = skills[i];
           return Container(
-            margin: EdgeInsets.symmetric(
+            margin: const EdgeInsets.symmetric(
               horizontal: 15, 
               vertical: 15,
             ),

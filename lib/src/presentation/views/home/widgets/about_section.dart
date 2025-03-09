@@ -25,7 +25,7 @@ class AboutSection extends StatelessWidget {
               // height: 40,
               width: 40,
             ),
-            _aboutText(),
+            _aboutText(context),
           ],
         ),
       );
@@ -33,26 +33,26 @@ class AboutSection extends StatelessWidget {
   }
 }
 
-Widget _aboutText() {
+Widget _aboutText(context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Text(
-        "Namaste",
+        "Hi",
         style: GoogleFonts.poppins(
           fontSize: 24,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
       const SizedBox(
         height: 20,
       ),
       Text(
-        "I'm Chinmay Singh Modak",
+        "I'm Chinmay Singh Modak,",
         style: GoogleFonts.poppins(
           fontSize: 20,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
       const SizedBox(
@@ -63,10 +63,10 @@ Widget _aboutText() {
           maxWidth: 900,
         ),
         child: Text(
-          "I'm a Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
+          "A Flutter developer and AI/ML enthusiast who loves building smooth and efficient cross-platform apps. While I focus on the frontend, I'm also familiar with Node.js and Django and can handle backend when needed. Always exploring new tech and finding ways to integrate AI into exciting projects! 🚀",
           style: GoogleFonts.poppins(
             fontSize: 20,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),
@@ -79,7 +79,7 @@ Widget _aboutText() {
             icon: const Icon(
               FontAwesome.github_brand,
               size: 35,
-              color: Colors.white,
+              // color: Colors.white,
             ),
             onPressed: () {
               launchUrl(Uri.parse("https://github.com/Chinmay575/"));
@@ -89,7 +89,7 @@ Widget _aboutText() {
             icon: const Icon(
               FontAwesome.linkedin_brand,
               size: 35,
-              color: Colors.white,
+              // color: Colors.white,
             ),
             onPressed: () {
               launchUrl(Uri.parse(
@@ -100,7 +100,7 @@ Widget _aboutText() {
             icon: const Icon(
               FontAwesome.instagram_brand,
               size: 35,
-              color: Colors.white,
+              // color: Colors.white,
             ),
             onPressed: () {
               launchUrl(
@@ -111,7 +111,7 @@ Widget _aboutText() {
             icon: const Icon(
               FontAwesome.facebook_brand,
               size: 35,
-              color: Colors.white,
+              // color: Colors.white,
             ),
             onPressed: () {
               launchUrl(
@@ -130,7 +130,10 @@ Widget _aboutText() {
         onPressed: () {},
         text: Text(
           "Get in Touch",
-          style: GoogleFonts.poppins(fontSize: 20, color: Colors.white),
+          style: GoogleFonts.poppins(
+            fontSize: 20,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
         ),
       ),
     ],

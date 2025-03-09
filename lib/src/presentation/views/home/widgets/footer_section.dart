@@ -3,10 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class FooterSection extends StatelessWidget {
+  const FooterSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
       // color: Colors.black,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -14,25 +16,31 @@ class FooterSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Built with ",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(
+                  // color: Colors.white,
+                  fontSize: 16,
+                ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Brand(
                 Brands.flutter,
                 size: 35,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
-              Text(
+              const Text(
                 "+",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(
+                  // color: Colors.white,
+                  fontSize: 16,
+                ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               SvgPicture.asset(
@@ -42,10 +50,13 @@ class FooterSection extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             "© ${DateTime.now().year} Chinmay Singh Modak. All rights reserved.",
-            style: TextStyle(color: Colors.grey[500], fontSize: 12),
+            style: const TextStyle(
+              // color: Colors.grey[500],
+              fontSize: 12,
+            ),
           ),
         ],
       ),

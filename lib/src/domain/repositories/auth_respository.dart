@@ -45,5 +45,6 @@ class AuthRespository extends _AuthRepository {
         RegisterUserReq(name: name, email: email, password: password);
     Map<String, dynamic>? res =
         await _networkRepository.post(Urls.register, req.toJson());
+    return res;
   }
 }

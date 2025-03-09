@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:portfolio/src/config/bloc/config_bloc.dart';
 import 'package:portfolio/src/presentation/views/auth/login_page.dart';
 import 'package:portfolio/src/presentation/views/auth/register_page.dart';
 import 'package:portfolio/src/presentation/views/error/page_not_found.dart';
@@ -59,10 +61,15 @@ class AppRouter {
     );
   }
 
-  static List<dynamic> allBlocProviders() => [];
+  static List<dynamic> allBlocProviders() => [
+        BlocProvider(
+          create: (_) => ConfigBloc()..add(LoadBackground()),
+        ),
+      ];
 
   static Future init() async {
-    WidgetsFlutterBinding.ensureInitialized();
+    WidgetsBinding bindings = WidgetsFlutterBinding.ensureInitialized();
+    FlutterNativeSplash.preserve(widgetsBinding: bindings);
   }
 }
 

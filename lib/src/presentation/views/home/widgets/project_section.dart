@@ -37,7 +37,7 @@ class ProjectSection extends StatelessWidget {
               height: 100,
               borderRadius: BorderRadius.circular(10),
               width: double.maxFinite,
-              color: Colors.grey.shade800,
+              color: Theme.of(context).colorScheme.surfaceContainer ,
               child: Center(
                 child: Text(
                   "Projects",
@@ -71,7 +71,7 @@ class ProjectSection extends StatelessWidget {
               itemBuilder: (_, i) {
                 Project project = projects[i];
                 return NeuCard(
-                  cardColor: Colors.grey.shade800,
+                  cardColor: Theme.of(context).colorScheme.surfaceContainer ,
                   paddingData: const EdgeInsets.all(10),
                   borderRadius: BorderRadius.circular(10),
                   child: Column(
@@ -102,7 +102,7 @@ class ProjectSection extends StatelessWidget {
                         child: InkWell(
                           child: const Icon(
                             FontAwesome.github_brand,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           onTap: () {
                             launchUrl(Uri.parse(project.code ?? ""));

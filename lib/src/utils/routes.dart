@@ -8,4 +8,8 @@ class Routes {
   static const String login = "login";
 
   static const String edit = "edit";
+
+  static const String codeGen = "codegen";
+
+  static const String preview = "preview";
 }

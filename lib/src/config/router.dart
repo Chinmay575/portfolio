@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:portfolio/src/config/bloc/config_bloc.dart';
 import 'package:portfolio/src/presentation/views/auth/login_page.dart';
 import 'package:portfolio/src/presentation/views/auth/register_page.dart';
+import 'package:portfolio/src/presentation/views/code_gen/code_gen.dart';
 import 'package:portfolio/src/presentation/views/error/page_not_found.dart';
 import 'package:portfolio/src/presentation/views/error/user_not_found.dart';
 import 'package:portfolio/src/presentation/views/edit/edit_page.dart';
@@ -21,6 +22,9 @@ class AppRouter {
       Uri uri = Uri.parse(settings.name!);
 
       List<String> segments = uri.pathSegments;
+      Map<String, String> data = uri.queryParameters;
+      print("data: ${uri.query.split('&')}");
+      print("data: ${data}");
 
       print(segments);
 
@@ -34,6 +38,8 @@ class AppRouter {
           case Routes.register:
             w = const RegisterPage();
             break;
+          case Routes.codeGen:
+            w = CodeGenScreen();
           default:
             print("default case");
             if (segments.length >= 2) {
@@ -42,7 +48,11 @@ class AppRouter {
               }
             } else if (segments.length == 1) {
               if (segments[0] == "Chinmay575") {
-                w = HomePage();
+                if (data.containsKey("code") && data.containsKey("state")) {
+                  w = CodeGenScreen();
+                } else {
+                  w = HomePage();
+                }
               } else {
                 w = const UserNotFoundPage();
               }

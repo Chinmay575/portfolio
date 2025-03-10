@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
             theme: state.theme,
             darkTheme: state.darkTheme,
             themeMode: state.themeMode,
-            initialRoute: "${Routes.home}/Chinmay575",
+            // initialRoute: "${Routes.home}/Chinmay575",
+            initialRoute: "/${Routes.codeGen}",
             onGenerateRoute: AppRouter.onGenerateRoute,
           );
         },

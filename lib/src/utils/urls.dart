@@ -28,4 +28,10 @@ class Urls {
   static const String register = "/api/auth/register";
 }
 
+class FigmaUrls {
+  static const String baseUrl = "https://api.figma.com";
+
+  static const String oauth = "https://www.figma.com/oauth";
+}
+
 enum Env { local, test, live }

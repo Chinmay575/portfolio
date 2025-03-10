@@ -36,9 +36,9 @@ class ConfigState {
 
 final class ConfigInitial extends ConfigState {
   static final AppColorScheme _scheme = AppColorScheme(
-    primary: Colors.limeAccent,
-    secondary: Colors.amber,
-    tertiary: Colors.orange,
+    primary: Color(0xFF5b63b7),
+    secondary: Color(0xFF9296f0),
+    tertiary: Color(0xFFcbccff),
   );
   ConfigInitial()
       : super(

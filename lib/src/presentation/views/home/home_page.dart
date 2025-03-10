@@ -18,40 +18,33 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Stack(
-          children: [
-            Positioned(width: 1920, height: 1080, child: const _Background()),
-            SingleChildScrollView(
-              child: Container(
-                // decoration: const BoxDecoration(
-                //   image: DecorationImage(
-                //     image: AssetImage("assets/images/large-triangles.png"),
-                //     fit: BoxFit.scaleDown,
-                //     repeat: ImageRepeat.repeat,
-                //   ),
-                // ),
-                child: Column(
-                  children: [
-                    TopBar(
-                      expKey: experienceKey,
-                      projectKey: projectsKey,
-                    ),
-                    const AboutSection(),
-                    SkillsSection(),
-                    ExperienceSection(
-                      key: experienceKey,
-                    ),
-                    ProjectSection(
-                      key: projectsKey,
-                    ),
-                    const FooterSection(),
-                  ],
+      body: Stack(
+        children: [
+          const Positioned(
+            width: 1920,
+            height: 1080,
+            child: _Background(),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                TopBar(
+                  expKey: experienceKey,
+                  projectKey: projectsKey,
                 ),
-              ),
+                const AboutSection(),
+                SkillsSection(),
+                ExperienceSection(
+                  key: experienceKey,
+                ),
+                ProjectSection(
+                  key: projectsKey,
+                ),
+                const FooterSection(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -32,7 +32,7 @@ class ConfigBloc extends Bloc<ConfigEvent, ConfigState> {
     UpdateColorScheme event,
     Emitter<ConfigState> emit,
   ) async {
-    String image = await loadBackground(event.colorScheme.primary);
+    String image = await loadBackground(state.theme.scaffoldBackgroundColor);
 
     emit(
       state.copyWith(
@@ -45,7 +45,7 @@ class ConfigBloc extends Bloc<ConfigEvent, ConfigState> {
   }
 
   onLoadBackground(LoadBackground event, Emitter<ConfigState> emit) async {
-    String image = await loadBackground(state.colorScheme.primary);
+    String image = await loadBackground(state.theme.scaffoldBackgroundColor);
     emit(state.copyWith(
       backgroundImageData: image,
     ));
@@ -57,7 +57,7 @@ class ConfigBloc extends Bloc<ConfigEvent, ConfigState> {
 
     svgData = svgData.replaceAll(
       '{color}',
-      c.toHex(),
+      Colors.black.toHex(),
     );
 
     return svgData;

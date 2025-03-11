@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:portfolio/src/config/bloc/config_bloc.dart';
 import 'package:portfolio/src/presentation/views/auth/login_page.dart';
 import 'package:portfolio/src/presentation/views/auth/register_page.dart';
+import 'package:portfolio/src/presentation/views/code_gen/bloc/code_gen_bloc.dart';
 import 'package:portfolio/src/presentation/views/code_gen/code_gen.dart';
 import 'package:portfolio/src/presentation/views/error/page_not_found.dart';
 import 'package:portfolio/src/presentation/views/error/user_not_found.dart';
@@ -74,6 +75,9 @@ class AppRouter {
   static List<dynamic> allBlocProviders() => [
         BlocProvider(
           create: (_) => ConfigBloc()..add(LoadBackground()),
+        ),
+        BlocProvider(
+          create: (_) => CodeGenBloc(),
         ),
       ];
 

@@ -1,4 +1,5 @@
 part of 'code_gen_bloc.dart';
 
-@immutable
-sealed class CodeGenEvent {}
+class CodeGenEvent {}
+
+class ExtractOAuthCode extends CodeGenEvent {}

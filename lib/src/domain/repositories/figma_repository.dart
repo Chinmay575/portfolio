@@ -7,7 +7,7 @@ import 'package:portfolio/src/utils/urls.dart';
 abstract class _FigmaRepository {
   Future authenticateUser();
 
-  (String, String) extractOAuthCode();
+  Future getFileComponents(String url);
 }
 
 class FigmaRepository implements _FigmaRepository {
@@ -18,26 +18,28 @@ class FigmaRepository implements _FigmaRepository {
     String secrets = await rootBundle.loadString("json/secrets.json");
     Map<String, dynamic> data = jsonDecode(secrets);
 
+    String redirectUri = "http://localhost:5000/oauth/callback";
+
     String url =
-        "${FigmaUrls.oauth}?client_id=${data["client_id"]}&redirect_uri=${Uri.encodeComponent(html.window.location.href)}&scope=files:read&state=123&response_type=code";
-
-    print(url);
-    // await launchUrl(Uri.parse(url));
-
+        "${FigmaUrls.oauth}?client_id=${data["client_id"]}&redirect_uri=$redirectUri&scope=files:read&state=123&response_type=code";
     html.window.location.href = url;
   }
 
-  (String, String) extractOAuthCode() {
-    String url = html.window.location.href;
-
+  @override
+  Future getFileComponents(String url) async {
     Uri parsedUrl = Uri.parse(url);
 
-    Map<String, String> query = parsedUrl.queryParameters;
+    List<String> s = parsedUrl.pathSegments;
 
-    if (query.containsKey("code") && query.containsKey("state")) {
-      return (query["code"] ?? "", query["state"] ?? "");
+    if (s.firstOrNull == "design") {
+      if(s.length >=3 ) {
+        String id = s[1];
+
+        
+        
+      }
     }
-
-    return ("", "");
+    print(parsedUrl);
+    print(s);
   }
 }

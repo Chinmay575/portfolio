@@ -49,8 +49,8 @@ class AppRouter {
               }
             } else if (segments.length == 1) {
               if (segments[0] == "Chinmay575") {
-                if (data.containsKey("code") && data.containsKey("state")) {
-                  w = CodeGenScreen();
+                if (data.containsKey("code")) {
+                  w = CodeGenScreen(code: data["code"]);
                 } else {
                   w = HomePage();
                 }
